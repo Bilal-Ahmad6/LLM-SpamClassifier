@@ -1,0 +1,214 @@
+@import url('https://fonts.googleapis.com/css2?family=Architects+Daughter:wght@700&family=Nunito:wght@700&display=swap');
+
+body {
+    font-family: 'Nunito', 'Architects Daughter', Arial, sans-serif;
+    background: #f8f8f8;
+    margin: 0;
+    color: #222;
+    min-height: 100vh;
+    font-weight: 700;
+}
+
+/* Global link color for consistency */
+a {
+    color: #222;
+    text-decoration: none;
+    transition: color 0.2s, background 0.2s;
+}
+a:hover, a:focus {
+    color: #fff;
+    background: #222;
+    border-radius: 6px;
+}
+header, footer {
+    background: #fff;
+    border: 2px solid #222;
+    box-shadow: 0 2px 0 #bbb;
+    padding: 0.7em 0;
+    font-family: 'Architects Daughter', 'Nunito', Arial, sans-serif;
+    font-weight: 700;
+}
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid #222;
+}
+.logo {
+    font-size: 2em;
+    font-family: 'Architects Daughter', 'Nunito', Arial, sans-serif;
+    margin-left: 2em;
+    display: flex;
+    align-items: center;
+    letter-spacing: 2px;
+    font-weight: 700;
+}
+nav {
+    margin-right: 2em;
+}
+nav a, .login-btn {
+    color: #222;
+    text-decoration: none;
+    margin-left: 2em;
+    font-size: 1.1em;
+    font-family: 'Nunito', 'Architects Daughter', Arial, sans-serif;
+    border-bottom: 2px solid transparent;
+    transition: border 0.2s, color 0.2s;
+    background: none;
+    border-radius: 6px;
+    padding: 0.2em 0.7em;
+    font-weight: 700;
+}
+nav a:hover, .login-btn:hover {
+    color: #fff;
+    background: #222;
+    border-bottom: 2px solid #222;
+}
+.login-btn {
+    border: 2px solid #222;
+    background: #fff;
+    margin-left: 2em;
+    font-size: 1em;
+    cursor: pointer;
+    font-weight: 700;
+}
+main {
+    max-width: 1200px;
+    margin: 2em auto 2em auto;
+    padding: 0 1em;
+}
+.sketchy-box {
+    background: #fff;
+    border: 2.5px solid #222;
+    border-radius: 12px;
+    box-shadow: 4px 4px 0 #bbb;
+    margin-bottom: 2em;
+    padding: 2em;
+    font-family: 'Nunito', 'Architects Daughter', Arial, sans-serif;
+    font-weight: 700;
+    position: relative;
+}
+.sketchy-btn {
+    font-family: 'Nunito', 'Architects Daughter', Arial, sans-serif;
+    font-size: 1.2em;
+    border: 2px solid #222;
+    background: #fff;
+    border-radius: 6px;
+    padding: 0.5em 2em;
+    margin: 0.5em 1em 0.5em 0;
+    cursor: pointer;
+    box-shadow: 2px 2px 0 #bbb;
+    transition: background 0.2s, color 0.2s, transform 0.1s;
+    font-weight: 700;
+    position: relative;
+    overflow: hidden;
+}
+.sketchy-btn:active {
+    transform: scale(0.97);
+    box-shadow: 1px 1px 0 #bbb;
+}
+.sketchy-btn.loading::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 1.5em;
+    height: 1.5em;
+    margin: -0.75em 0 0 -0.75em;
+    border: 3px solid #222;
+    border-top: 3px solid #fff;
+    border-radius: 50%;
+    animation: spin 0.7s linear infinite;
+    z-index: 2;
+}
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+.sketchy-btn:hover {
+    background: #222;
+    color: #fff;
+}
+.stats-row {
+    display: flex;
+    gap: 2em;
+    margin-top: 2em;
+    flex-wrap: wrap;
+}
+.stats-card {
+    flex: 1 1 200px;
+    min-width: 200px;
+    background: #fff;
+    border: 2.5px solid #222;
+    border-radius: 12px;
+    box-shadow: 2px 2px 0 #bbb;
+    margin: 0.5em;
+    padding: 1.5em 1em;
+    font-family: 'Nunito', 'Architects Daughter', Arial, sans-serif;
+    text-align: center;
+    font-size: 1.5em;
+    position: relative;
+    font-weight: 700;
+}
+.stats-card .icon {
+    font-size: 2em;
+    margin-bottom: 0.5em;
+}
+.section-title {
+    font-size: 2.2em;
+    font-family: 'Nunito', 'Architects Daughter', Arial, sans-serif;
+    margin-bottom: 0.5em;
+    font-weight: 700;
+}
+.section-desc {
+    font-size: 1.2em;
+    margin-bottom: 1.5em;
+    font-family: 'Nunito', 'Architects Daughter', Arial, sans-serif;
+    font-weight: 700;
+}
+.sketchy-hero {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 2em;
+    flex-wrap: wrap;
+}
+.hero-text {
+    flex: 2;
+}
+.hero-img {
+    flex: 1;
+    text-align: center;
+}
+.hero-img svg {
+    width: 180px;
+    height: 180px;
+    stroke: #222;
+    stroke-width: 2.5px;
+    fill: none;
+}
+footer {
+    border-top: 2px solid #222;
+    box-shadow: 0 -2px 0 #bbb;
+    padding: 1em 2em;
+    font-size: 1.1em;
+    font-family: 'Nunito', 'Architects Daughter', Arial, sans-serif;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 700;
+}
+.footer-links a {
+    color: #222;
+    margin-left: 2em;
+    text-decoration: none;
+    font-family: 'Nunito', 'Architects Daughter', Arial, sans-serif;
+    font-weight: 700;
+}
+.footer-links a:hover {
+    text-decoration: underline;
+}
+@media (max-width: 900px) {
+    .sketchy-hero { flex-direction: column; }
+    .stats-row { flex-direction: column; }
+}

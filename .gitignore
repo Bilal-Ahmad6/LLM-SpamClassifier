@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.env
+.env/
+.venv/
+venv/
+ENV/
+*.env
+*.venv
+
+# Jupyter Notebooks
+.ipynb_checkpoints
+
+# VS Code
+.vscode/
+
+# Data and model files
+*.pth
+*.zip
+*.csv
+*.docx
+
+# Webapp static files
+webapp/static/*.svg
+webapp/static/*.png
+webapp/static/*.jpg
+webapp/static/*.jpeg
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+
+# Other
+*.bak

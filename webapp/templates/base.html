@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}SpamClassifier{% endblock %}</title>
+    <link rel="stylesheet" href="/static/sketchy.css">
+    <link rel="stylesheet" href="/static/style.css">
+    <style>
+      header {
+        background: #fff;
+        color: #222;
+        border-bottom: 3px solid #222;
+        box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+      }
+      .logo img {
+        filter: drop-shadow(0 2px 2px #0002);
+      }
+      nav a {
+        font-weight: 700;
+        font-size: 1.1em;
+        margin-left: 2em;
+        letter-spacing: 0.5px;
+        transition: color 0.2s;
+        color: #222;
+        border-radius: 8px;
+        padding: 0.3em 1.1em;
+        border: 2px solid transparent;
+        box-sizing: border-box;
+      }
+      nav a.active, nav a.active:visited {
+        color: #fff !important;
+        background: #222;
+        border: 2px solid #222;
+      }
+      nav a:hover {
+        background: #222;
+        color: #fff;
+        border: 2px solid #222;
+      }
+      .logo span {
+        color: #222;
+      }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo" style="display:flex;align-items:center;gap:0.5em;">
+            <img src="/static/sketchy_robot.svg" alt="Logo" style="height:2.2em;vertical-align:middle;">
+            <span style="font-family:'Nunito','Architects Daughter',cursive;font-size:2em;font-weight:bold;letter-spacing:1px;">SpamChecker</span>
+        </div>
+        <nav class="sketchy-nav">
+            <a href="/" class="{% if request.path == '/' %}active{% endif %}">Home</a>
+            <a href="/classify" class="{% if request.path.startswith('/classify') %}active{% endif %}">Classify</a>
+            <a href="/how-it-works" class="{% if request.path.startswith('/how-it-works') %}active{% endif %}">How it Works</a>
+            <a href="/statistics" class="{% if request.path.startswith('/statistics') %}active{% endif %}">Model Statistics</a>
+        </nav>
+    </header>
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+    <!-- Footer removed as requested -->
+    <!-- Modal Structure -->
+    <div id="modal" class="modal" style="display:none; position:fixed; z-index:2000; left:0; top:0; width:100vw; height:100vh; background:rgba(0,0,0,0.4);">
+      <div id="modal-content" style="background:#fff; margin:6% auto; padding:2.5em 2.5em 2em 2.5em; border:2px solid #222; border-radius:18px; max-width:600px; min-width:320px; text-align:left; position:relative; box-shadow:0 8px 32px #0002;">
+        <span id="close-modal" class="close-modal" style="position:absolute; top:18px; right:32px; font-size:2.5em; cursor:pointer;">&times;</span>
+        <div id="modal-body"></div>
+      </div>
+    </div>
+    <script src="/static/sketchy.js"></script>
+    <script>
+      // Modal content for each footer link (moved to external JS for maintainability)
+      window.modalContents = {
+        'privacy-link': `<h2>Privacy Policy</h2><p>Your privacy is important. We do not store your messages or personal data.</p>`,
+        'terms-link': `<h2>Terms of Service</h2><p>Use this service responsibly. No guarantees are made for classification accuracy.</p>`,
+        'help-link': `<h2>Help</h2><p>For assistance, contact us at <a href='mailto:info@spamchecker.com'>info@spamchecker.com</a>.</p>`
+      };
+    </script>
+</body>
+</html>

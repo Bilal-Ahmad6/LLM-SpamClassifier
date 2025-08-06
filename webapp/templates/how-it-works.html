@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+{% block title %}How it works - SpamClassifier{% endblock %}
+
+{% block content %}
+<div class="sketchy-box" style="max-width: 900px; margin: 2em auto;">
+  <h1 class="section-title">How It Works</h1>
+  <p class="section-desc" style="font-size: 1.2em; max-width: 700px; margin: auto;">
+    <strong>SpamClassifier</strong> uses a fine-tuned <strong>GPT-2 (124M)</strong> transformer model to detect spam in SMS messages.
+    The model is trained on the real 
+    <a href="https://archive.ics.uci.edu/dataset/228/sms+spam+collection" target="_blank">SMS Spam Collection Dataset</a>
+    (5,574 messages, 13.4% spam).
+  </p>
+
+  <div class="flex-row" style="display: flex; flex-wrap: wrap; gap: 2em; justify-content: center; margin-top: 2em;">
+    <!-- Transformer Architecture Section -->
+    <div style="flex: 2; min-width: 320px;">
+      <h2 class="section-title" style="font-size: 1.2em;">Transformer Architecture</h2>
+
+      <figure style="margin: 0;">
+        <img src="https://jalammar.github.io/images/gpt2/gpt-2-transformer-xl-bert-3.png"
+             alt="GPT-2 vs Transformer"
+             style="width: 100%; max-width: 350px; background: #fff; border-radius: 8px; box-shadow: 0 2px 12px #0001;">
+        <figcaption style="font-size: 0.95em; margin-top: 0.5em;">
+          GPT-2 is a <strong>decoder-only transformer</strong> with 12 layers, 12 attention heads, and 124M parameters.
+          It processes up to 1,024 tokens per message. <br>
+          <span style="font-size: 0.85em;">Image: <a href="https://jalammar.github.io/illustrated-gpt2/" target="_blank">Jay Alammar</a></span>
+        </figcaption>
+      </figure>
+
+      <figure style="margin-top: 1.5em;">
+        <img src="https://jalammar.github.io/images/gpt2/gpt2-architecture-highlevel.png"
+             alt="GPT-2 Block Diagram"
+             style="width: 100%; max-width: 350px; background: #fff; border-radius: 8px; box-shadow: 0 2px 12px #0001;">
+        <figcaption style="font-size: 0.95em; margin-top: 0.5em;">
+          High-level block diagram of GPT-2 architecture. <br>
+          <span style="font-size: 0.85em;">Image: <a href="https://jalammar.github.io/illustrated-gpt2/" target="_blank">Jay Alammar</a></span>
+        </figcaption>
+      </figure>
+    </div>
+
+    <!-- Classification Steps -->
+    <div style="flex: 1; min-width: 220px;">
+      <h2 class="section-title" style="font-size: 1.2em;">How a Message is Classified</h2>
+      <ol style="font-size: 1em; line-height: 1.6; margin-left: 1.2em;">
+        <li>Message is tokenized (split into subword units).</li>
+        <li>Tokens are embedded and passed through 12 transformer blocks.</li>
+        <li>Model outputs a probability for <strong>spam</strong> or <strong>not spam</strong>.</li>
+        <li>Result is shown instantly on the website.</li>
+      </ol>
+      <figure style="margin-top: 1.5em;">
+        <img src="https://i.imgur.com/2yaf2wb.png"
+             alt="Classification Flow"
+             style="width: 100%; max-width: 220px; background: #fff; border-radius: 8px; box-shadow: 0 2px 12px #0001;">
+        <figcaption style="font-size: 0.95em; margin-top: 0.5em;">
+          Step-by-step flow: tokenization → embedding → transformer blocks → classification.
+        </figcaption>
+      </figure>
+    </div>
+  </div>
+</div>
+
+<!-- Dataset Section -->
+<div class="sketchy-box" style="max-width: 900px; margin: 2em auto; display: flex; flex-wrap: wrap; gap: 2em; align-items: center;">
+  <!-- Dataset Description -->
+  <div style="flex: 2; min-width: 320px;">
+    <h2 class="section-title" style="font-size: 1.2em;">About the Dataset</h2>
+    <figure>
+      <img src="https://archive.ics.uci.edu/static/public/default/Large.jpg?15"
+           alt="SMS Spam Collection"
+           style="width: 100%; max-width: 320px; background: #fff; border-radius: 8px; box-shadow: 0 2px 12px #0001;">
+      <figcaption style="font-size: 0.95em; margin-top: 0.5em;">
+        The <strong>SMS Spam Collection</strong> is a public dataset of 5,574 SMS messages labeled as "spam" or "ham" (not spam). <br>
+        <span style="font-size: 0.85em;">Source: <a href="https://archive.ics.uci.edu/dataset/228/sms+spam+collection" target="_blank">UCI ML Repository</a></span>
+      </figcaption>
+    </figure>
+  </div>
+
+  <!-- Dataset Stats -->
+  <div style="flex: 1; min-width: 220px;">
+    <h2 class="section-title" style="font-size: 1.2em;">Key Facts</h2>
+    <ul style="font-size: 1em; line-height: 1.7; margin-left: 1.2em;">
+      <li>5,574 total messages</li>
+      <li>747 spam, 4,827 ham</li>
+      <li>13.4% spam rate</li>
+      <li>Balanced for training</li>
+      <li>70% train, 10% validation, 20% test</li>
+    </ul>
+  </div>
+</div>
+
+<div class="sketchy-box" style="max-width:900px;margin:2em auto;">
+  <h2 class="section-title" style="text-align:center;">Model Internals & Training Strategy</h2>
+
+  <div style="display:flex;flex-wrap:wrap;gap:2em;align-items:flex-start;justify-content:center;">
+
+    <!-- Tokenization -->
+    <div style="flex:1;min-width:280px;">
+      <h3 style="font-size:1.1em;">Subword Tokenization</h3>
+      <img src="https://jalammar.github.io/images/gpt2-tokenization/tokenization-flow.png"
+           alt="Tokenization Flow"
+           style="width:100%;max-width:280px;border-radius:8px;box-shadow:0 2px 12px #0001;background:#fff;">
+      <p style="font-size:0.95em;margin-top:0.5em;">
+        GPT-2 uses Byte Pair Encoding (BPE) to split text into subword tokens. This allows it to handle rare or unknown words gracefully.
+      </p>
+    </div>
+
+    <!-- Fine-tuning Strategy -->
+    <div style="flex:1;min-width:280px;">
+      <h3 style="font-size:1.1em;">Fine-Tuning on Limited Hardware</h3>
+      <img src="https://i.imgur.com/xlNIiHt.png" 
+           alt="Training Strategy"
+           style="width:100%;max-width:280px;border-radius:8px;box-shadow:0 2px 12px #0001;background:#fff;">
+      <p style="font-size:0.95em;margin-top:0.5em;">
+        Only the final layer and last transformer block are trained (others are frozen), making training feasible on laptops with ~4GB VRAM.
+      </p>
+    </div>
+
+    <!-- Dataset Stats (Placeholder for chart) -->
+    <div style="flex:1;min-width:280px;">
+      <h3 style="font-size:1.1em;">Balanced Dataset Split</h3>
+      <img src="/static/images/spam_ham_chart.png"
+           alt="Spam Ham Split"
+           style="width:100%;max-width:280px;border-radius:8px;box-shadow:0 2px 12px #0001;background:#fff;">
+      <p style="font-size:0.95em;margin-top:0.5em;">
+        The dataset has 747 spam and 747 ham messages (balanced), split 70% train, 10% validation, 20% test.
+      </p>
+    </div>
+
+  </div>
+</div>
+
+<!-- CTA -->
+<div class="sketchy-box" style="text-align: center; max-width: 900px; margin: 2em auto;">
+  <a href="/classify" class="sketchy-btn" style="font-size: 1.1em; padding: 0.7em 2.2em;">Try the Classifier</a>
+</div>
+{% endblock %}

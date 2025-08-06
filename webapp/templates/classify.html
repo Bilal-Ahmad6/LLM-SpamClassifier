@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% block title %}Classify - SpamClassifier{% endblock %}
+{% block content %}
+<div class="sketchy-box">
+  <h1 class="section-title">Classify Text Message</h1>
+  <form action="/classify" method="post">
+    <textarea name="message" placeholder="Type your message here..." style="width:95%;height:120px;font-size:1.2em;font-family:'Indie Flower',cursive;border:2px solid #222;border-radius:8px;padding:1em;margin-bottom:1em;"></textarea>
+    <button type="submit" class="sketchy-btn" style="width:100%;">Classify</button>
+  </form>
+</div>
+{% if label %}
+<script>
+  window.addEventListener('DOMContentLoaded', function() {
+    var modal = document.getElementById('modal');
+    var modalBody = document.getElementById('modal-body');
+    if(modal && modalBody) {
+      let emoji = '';
+      if ("{{ label }}".toUpperCase() === 'SPAM') {
+        emoji = '⚠️';
+      } else if ("{{ label }}".toUpperCase() === 'NOT SPAM') {
+        emoji = '✅';
+      }
+      modalBody.innerHTML = `
+        <div style='text-align:center;'>
+          <h1 class='section-title' style='font-size:2.5em;display:flex;align-items:center;gap:0.5em;justify-content:center;'>Result ${emoji}</h1>
+          <div style='margin-top:2em;font-size:1.5em;font-weight:bold;'>Classification: <span style='font-weight:900;'>{{ label }}</span></div>
+          <div style='margin-top:1em;font-size:1.2em;'>Confidence Score: {{ confidence }}%</div>
+        </div>
+      `;
+      modal.style.display = 'block';
+    }
+  });
+</script>
+{% endif %}
+{% endblock %}

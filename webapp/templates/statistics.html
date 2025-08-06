@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}Model Statistics - SpamClassifier{% endblock %}
+{% block content %}
+<div class="sketchy-box" style="max-width:900px;margin:2em auto 2em auto;">
+  <h1 class="section-title">Model Architecture</h1>
+  <div class="section-desc" style="font-size:1.1em;max-width:700px;margin:auto;">
+    The SpamClassifier uses a <b>fine-tuned GPT-2 (124M)</b> transformer. Below are the real hyperparameters and architecture details:
+  </div>
+  <div style="display:flex;flex-wrap:wrap;gap:2em;align-items:center;justify-content:center;margin-top:2em;">
+    <div style="flex:2;min-width:320px;">
+      <img src="https://jalammar.github.io/images/gpt2/gpt2-117-parameters.png" alt="GPT-2 Parameters" style="width:100%;max-width:350px;background:#fff;border-radius:8px;box-shadow:0 2px 12px #0001;">
+      <div style="font-size:0.95em;margin-top:0.5em;">GPT-2 124M: 12 layers, 12 attention heads, 768 embedding size, 50,257 vocab size, 1,024 context length.<br><span style="font-size:0.85em;">Image: <a href="https://jalammar.github.io/illustrated-gpt2/" target="_blank">Jay Alammar</a></span></div>
+    </div>
+    <div style="flex:1;min-width:220px;">
+      <ul style="font-size:1em;line-height:1.7;margin:0 0 0 1.2em;">
+        <li><b>Model:</b> GPT-2 (124M parameters)</li>
+        <li><b>Layers:</b> 12 transformer decoder blocks</li>
+        <li><b>Attention heads:</b> 12</li>
+        <li><b>Embedding size:</b> 768</li>
+        <li><b>Vocab size:</b> 50,257</li>
+        <li><b>Context length:</b> 1,024 tokens</li>
+        <li><b>Activation:</b> GELU</li>
+        <li><b>Layer norm:</b> Pre-norm</li>
+        <li><b>Output:</b> 2-class (spam/not spam)</li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="sketchy-box" style="max-width:900px;margin:2em auto 2em auto;display:flex;flex-wrap:wrap;gap:2em;align-items:center;">
+  <div style="flex:2;min-width:320px;">
+    <h2 class="section-title" style="font-size:1.2em;">Dataset & Training</h2>
+    <img src="https://archive.ics.uci.edu/static/public/default/Large.jpg?15" alt="SMS Spam Collection" style="width:100%;max-width:320px;background:#fff;border-radius:8px;box-shadow:0 2px 12px #0001;">
+    <div style="font-size:0.95em;margin-top:0.5em;">Dataset: <b>SMS Spam Collection</b> (5,574 messages, 13.4% spam).<br>Balanced for training: 747 spam, 747 ham.<br>Split: 70% train, 10% validation, 20% test.<br><span style="font-size:0.85em;">Source: <a href="https://archive.ics.uci.edu/dataset/228/sms+spam+collection" target="_blank">UCI ML Repository</a></span></div>
+  </div>
+  <div style="flex:1;min-width:220px;">
+    <h2 class="section-title" style="font-size:1.2em;">Performance</h2>
+    <ul style="font-size:1em;line-height:1.7;margin:0 0 0 1.2em;">
+      <li><b>Accuracy:</b> ~98%</li>
+      <li><b>Precision:</b> ~97%</li>
+      <li><b>Recall:</b> ~97%</li>
+      <li><b>F1 Score:</b> ~97%</li>
+      <li><b>ROC-AUC:</b> ~0.99</li>
+    </ul>
+    <div style="font-size:0.9em;color:#666;margin-top:0.5em;">Metrics from validation/test set. Actual values may vary slightly by run.</div>
+  </div>
+</div>
+<div class="sketchy-box" style="max-width:900px;margin:2em auto 2em auto;text-align:center;">
+  <img src="https://jalammar.github.io/images/gpt2/gpt2-transformer-block-vectors-2.png" alt="Transformer Block" style="width:100%;max-width:400px;background:#fff;border-radius:8px;box-shadow:0 2px 12px #0001;margin-bottom:1em;">
+  <div style="font-size:1em;max-width:700px;margin:auto;">Each message is tokenized, embedded, and passed through 12 transformer blocks. The model uses self-attention to capture context and outputs a spam/not spam prediction.</div>
+</div>
+<div class="sketchy-box" style="max-width:900px;margin:2em auto 2em auto;display:flex;flex-wrap:wrap;gap:2em;align-items:center;">
+  <div style="flex:2;min-width:320px;text-align:center;">
+    <img src="https://i.imgur.com/4zQF1bT.png" alt="Confusion Matrix" style="width:100%;max-width:320px;background:#fff;border-radius:8px;box-shadow:0 2px 12px #0001;">
+    <div style="font-size:0.95em;margin-top:0.5em;">Sample confusion matrix: shows true/false positives and negatives for spam detection.</div>
+  </div>
+  <div style="flex:2;min-width:320px;text-align:center;">
+    <img src="https://i.imgur.com/8Q2Qw2v.png" alt="Performance Bar Chart" style="width:100%;max-width:320px;background:#fff;border-radius:8px;box-shadow:0 2px 12px #0001;">
+    <div style="font-size:0.95em;margin-top:0.5em;">Bar chart: Model accuracy, precision, recall, and F1 score.</div>
+  </div>
+</div>
+{% endblock %}
