@@ -8,7 +8,6 @@ A clean, well-structured implementation of SMS spam detection using GPT-2 fine-t
 ## Features
 
 - ✅ **Clean, organized code structure** with proper documentation
-- ✅ **Fixed all yellow underline errors** and improved type hints
 - ✅ **Interactive spam detection** - enter any text and get instant classification
 - ✅ **Pre-trained GPT-2 model** integration
 - ✅ **Balanced dataset handling** for better training
