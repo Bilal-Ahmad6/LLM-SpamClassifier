@@ -1,9 +1,6 @@
 # Spam Classifier using GPT-2 Fine-tuning
 
 A clean, well-structured implementation of SMS spam detection using GPT-2 fine-tuning with interactive prediction capabilities.
-# Spam Classifier using GPT-2 Fine-tuning
-
-A clean, well-structured implementation of SMS spam detection using GPT-2 fine-tuning with interactive prediction capabilities.
 
 ## Features
 
@@ -200,4 +197,67 @@ Confidence: 89.45%
 
 ## License
 
-This code is provided for educational purposes. The SMS dataset is from UCI Machine Learning Repository. 
+This code is provided for educational purposes. The SMS dataset is from UCI Machine Learning Repository.
+
+## Folder Structure
+
+```
+├── gpt_download3.py
+├── README.md
+├── sms_spam_collection.zip
+├── Spam_Classifier_Technical_Report.docx
+├── spam_classifier.pth
+├── spam_classifier.py
+├── Technical_Report_Spam_Classifier.py
+├── test.csv
+├── train.csv
+├── validation.csv
+├── __pycache__/
+│   ├── cute_handdrawn_gui.cpython-311.pyc
+│   ├── gpt_download3.cpython-311.pyc
+│   ├── spam_classifier.cpython-311.pyc
+│   └── spam_detector_gui.cpython-311.pyc
+├── gpt2/
+│   └── 124M/
+│       ├── checkpoint
+│       ├── encoder.json
+│       ├── hparams.json
+│       ├── model.ckpt.data-00000-of-00001
+│       ├── model.ckpt.index
+│       ├── model.ckpt.meta
+│       └── vocab.bpe
+├── sms_spam_collection/
+│   ├── readme
+│   └── SMSSpamCollection.tsv
+├── static/
+│   └── images/
+│       ├── spam_ham_chart.png (removed)
+│       └── ...
+├── tutorials/
+│   ├── Architecture Classification finetuning.ipynb
+│   ├── architecture.py
+│   ├── classificationHead.py
+│   ├── finetuned_settingData.py
+│   └── LossCalc.py
+├── webapp/
+│   ├── app.py
+│   ├── run_webapp.bat
+│   ├── static/
+│   │   ├── barchart.svg
+│   │   ├── piechart.svg
+│   │   ├── scatter.svg
+│   │   ├── sketchy_robot.svg
+│   │   ├── sketchy.css
+│   │   ├── sketchy.js
+│   │   ├── spa.js
+│   │   ├── spam_illustration.svg
+│   │   └── style.css
+│   └── templates/
+│       ├── base.html
+│       ├── classify.html
+│       ├── home.html
+│       ├── how-it-works.html
+│       ├── index.html
+│       ├── result.html
+│       └── statistics.html
+```
